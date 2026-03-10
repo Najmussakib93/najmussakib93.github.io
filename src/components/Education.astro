@@ -1,0 +1,110 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { education } from '../data/education';
+---
+
+<section id="education" class="section-padding bg-white dark:bg-gray-950">
+  <div class="container-max">
+    <div class="fade-in-up">
+      <SectionHeading title="Education" subtitle="My academic journey." />
+    </div>
+
+    <!-- Awards banner -->
+    <div class="fade-in-up max-w-3xl mx-auto mb-10 grid sm:grid-cols-2 gap-4">
+      <div class="flex items-start gap-4 p-4 rounded-2xl bg-yellow-50 dark:bg-yellow-950/30 border border-yellow-200 dark:border-yellow-800">
+        <span class="text-2xl flex-shrink-0">🏆</span>
+        <div>
+          <p class="font-bold text-gray-900 dark:text-white text-sm">ICCR Scholarship</p>
+          <p class="text-xs text-gray-600 dark:text-gray-400 mt-0.5">Full scholarship awarded by the Government of India for talented international students</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 p-4 rounded-2xl bg-yellow-50 dark:bg-yellow-950/30 border border-yellow-200 dark:border-yellow-800">
+        <span class="text-2xl flex-shrink-0">🥈</span>
+        <div>
+          <p class="font-bold text-gray-900 dark:text-white text-sm">Inter NIT &amp; IIT ICPC — 2nd Place</p>
+          <p class="text-xs text-gray-600 dark:text-gray-400 mt-0.5">Competitive programming competition among India's top technical institutes</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative max-w-3xl mx-auto">
+      <!-- Vertical line -->
+      <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-indigo-500 to-purple-500 hidden sm:block"></div>
+
+      <div class="space-y-10">
+        {education.map((entry) => (
+          <div class="fade-in-up relative flex gap-6">
+            <!-- Dot -->
+            <div class="hidden sm:flex flex-shrink-0 items-start pt-1.5">
+              <div class="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-950 border-2 border-indigo-500 flex items-center justify-center z-10">
+                <svg class="h-5 w-5 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                  <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="flex-1 bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-800 hover:border-indigo-300 dark:hover:border-indigo-700 transition-all hover:shadow-md">
+              <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+                <div>
+                  <h3 class="text-lg font-bold text-gray-900 dark:text-white">{entry.degree}</h3>
+                  <p class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm mt-0.5">{entry.institution}</p>
+                </div>
+                <div class="text-right">
+                  <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                    {entry.period}
+                  </span>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">{entry.location}</p>
+                </div>
+              </div>
+
+              {entry.description && (
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">{entry.description}</p>
+              )}
+
+              {entry.highlights && entry.highlights.length > 0 && (
+                <ul class="space-y-1.5 mb-4">
+                  {entry.highlights.map((h) => (
+                    <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+                      <span class="text-indigo-500 mt-0.5 flex-shrink-0">▸</span>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <!-- Nested research block (B.Tech thesis) -->
+              {entry.research && (
+                <div class="mt-4 rounded-xl border border-purple-200 dark:border-purple-800 bg-purple-50 dark:bg-purple-950/30 p-4">
+                  <div class="flex items-center gap-2 mb-2">
+                    <svg class="h-4 w-4 text-purple-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <span class="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">B.Tech Thesis</span>
+                  </div>
+                  <p class="text-sm font-bold text-gray-900 dark:text-white mb-2">{entry.research.title}</p>
+                  <ul class="space-y-1.5 mb-3">
+                    {entry.research.points.map((p) => (
+                      <li class="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
+                        <span class="text-purple-500 mt-0.5 flex-shrink-0">▸</span>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <div class="flex flex-wrap gap-1.5">
+                    {entry.research.tech.map((t) => (
+                      <span class="px-2 py-0.5 rounded-md text-xs font-medium bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

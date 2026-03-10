@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="404 — Page Not Found | Najmus Sakib" description="The page you're looking for doesn't exist.">
+  <Header />
+  <main class="min-h-screen flex items-center justify-center px-4 pt-16">
+    <div class="text-center">
+      <p class="text-8xl font-extrabold text-indigo-500 mb-4">404</p>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Page not found</h1>
+      <p class="text-gray-500 dark:text-gray-400 mb-8 max-w-md mx-auto">
+        Oops! The page you're looking for doesn't exist or has been moved.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition-all hover:shadow-lg hover:shadow-indigo-500/25"
+      >
+        ← Back to Home
+      </a>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

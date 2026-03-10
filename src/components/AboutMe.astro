@@ -1,0 +1,85 @@
+---
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section id="about" class="section-padding bg-gray-50 dark:bg-gray-900">
+  <div class="container-max">
+    <div class="fade-in-up">
+      <SectionHeading
+        title="About Me"
+        subtitle="A bit about who I am and what I do."
+      />
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Photo -->
+      <div class="fade-in-up flex justify-center md:justify-start">
+        <div class="relative">
+          <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-950 dark:to-purple-950">
+            <img
+              src="/images/profile.webp"
+              alt="Najmus Sakib"
+              class="w-full h-full object-cover object-top"
+            />
+          </div>
+          <div class="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border-2 border-indigo-300 dark:border-indigo-700 -z-10"></div>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="fade-in-up space-y-5">
+        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          Hey! I'm Najmus — a data analyst and ML practitioner based in Texas.
+          I hold an <strong class="text-gray-900 dark:text-white">M.Sc. in Computer Science from Lamar University</strong> and a
+          <strong class="text-gray-900 dark:text-white">B.Tech. in CSE from NIT Warangal</strong>, where I was awarded
+          the ICCR Scholarship by the Government of India.
+        </p>
+
+        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          I've worked across data analytics, machine learning, and software engineering — from
+          analyzing 10M+ clinical records at <strong class="text-gray-900 dark:text-white">Script Care Ltd</strong> to
+          building developer tools at <strong class="text-gray-900 dark:text-white">Amazon Music</strong>.
+          My toolkit spans Python, SQL, Scikit-learn, Tensorflow, PyTorch, React, and more.
+          These days I'm diving deeper into AI and exploring what's possible with modern LLMs and generative models.
+        </p>
+
+        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          Outside of work, I'm a passionate <strong class="text-gray-900 dark:text-white">Manchester United</strong> supporter ☞ yes, even through the rough patches.
+          I unwind by playing video games and getting lost in a good book.
+          I'm currently looking for <strong class="text-gray-900 dark:text-white">PhD opportunities in AI/ML</strong> and
+          open to exciting full-time roles.
+        </p>
+
+        <!-- Quick facts -->
+        <div class="grid grid-cols-2 gap-4 pt-2">
+          {[
+            { label: 'Location', value: 'Beaumont, TX, USA' },
+            { label: 'Email', value: 'snajmus16@gmail.com' },
+            { label: 'Education', value: 'M.Sc. CS, Lamar University' },
+            { label: 'Looking for', value: 'PhD & Full-time Roles' },
+          ].map((fact) => (
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">{fact.label}</p>
+              <p class="text-sm font-medium text-gray-900 dark:text-gray-100 mt-0.5">{fact.value}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- CV Download -->
+        <div class="pt-4">
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition-all hover:shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5"
+          >
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

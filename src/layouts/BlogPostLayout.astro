@@ -1,0 +1,55 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage } = post.data;
+
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${title} — Najmus Sakib`} description={description} image={heroImage}>
+  <main class="max-w-3xl mx-auto px-4 py-20">
+    <a
+      href="/blog"
+      class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 mb-8 transition-colors"
+    >
+      ← Back to Blog
+    </a>
+
+    {heroImage && (
+      <img
+        src={heroImage}
+        alt={title}
+        class="w-full rounded-2xl mb-8 aspect-video object-cover"
+      />
+    )}
+
+    <header class="mb-8">
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">{title}</h1>
+      <div class="text-sm text-gray-500 dark:text-gray-400">
+        <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+        {updatedDate && (
+          <span class="ml-4">
+            Updated:{' '}
+            <time datetime={updatedDate.toISOString()}>
+              {updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          </span>
+        )}
+      </div>
+    </header>
+
+    <article class="prose prose-gray dark:prose-invert prose-indigo max-w-none">
+      <slot />
+    </article>
+  </main>
+</BaseLayout>
